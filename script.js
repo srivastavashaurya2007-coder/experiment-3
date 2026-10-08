@@ -1,35 +1,18 @@
-let input = document.getElementById("taskInput");
-let button = document.getElementById("addBtn");
+let input = document.getElementById("task");
+let button = document.getElementById("btn");
 let list = document.getElementById("taskList");
 
-button.addEventListener("click", function() {
+button.onclick = function() {
 
-    let task = input.value;
-
-    if (task !== "") {
-
-        // Create a new list item
-        let li = document.createElement("li");
-
-        // Add task text
-        li.textContent = task;
-
-        // Create delete button
-        let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-
-        // Delete task
-        deleteBtn.addEventListener("click", function() {
-            li.remove();
-        });
-
-        // Add delete button to list item
-        li.appendChild(deleteBtn);
-
-        // Add list item to the list
-        list.appendChild(li);
-
-        // Clear input
-        input.value = "";
+    if (input.value == "") {
+        return;
     }
-});
+
+    let task = document.createElement("li");
+
+    task.innerHTML = input.value;
+
+    list.appendChild(task);
+
+    input.value = "";
+};
